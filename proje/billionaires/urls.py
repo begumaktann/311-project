@@ -4,7 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('geog/', views.geog, name='geog'),
-    path('login/', views.login, name='login'),
     path('personal/', views.personal, name='personal'),
     path('financial/', views.financial, name='financial')
     # Add other URL patterns for other views as needed
