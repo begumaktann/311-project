@@ -1,0 +1,63 @@
+{% include 'main.html' %}
+
+      <div id="map" style="height: 800px;"></div>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script>
+            // Create the map
+            var mymap = L.map('map').setView([0, 0], 2);
+        
+            // Add the base tile layer (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(mymap);
+        
+            // Define a custom icon
+            var customIcon = L.icon({
+                iconUrl: 'icon.png', // Path to your custom icon image
+                iconSize: [16, 16],  // Size of the icon
+                iconAnchor: [16, 32], // Anchor point of the icon
+                popupAnchor: [0, -32] // Popup anchor point
+            });
+        
+            // Load your CSV data dynamically
+            // Assume your CSV has 'latitude_country' and 'longitude_country' columns
+            // Fetch data using an AJAX request or any method you prefer
+            fetch('beel.csv')
+                .then(response => response.text())
+                .then(data => {
+                    // Parse CSV data
+                    var rows = Papa.parse(data, { header: true }).data;
+        
+                    console.log('Parsed CSV data:', rows);
+        
+                    // Add markers for each coordinate with the custom icon
+                    rows.forEach(row => {
+                        console.log('Adding marker:', row);
+        
+                        // Extract latitude and longitude from your CSV columns
+                        var latitude = parseFloat(row.latitude_country);
+                        var longitude = parseFloat(row.longitude_country);
+        
+                        // Check if latitude and longitude are valid numbers
+                        if (!isNaN(latitude) && !isNaN(longitude)) {
+                            var marker = L.marker([latitude, longitude], { icon: customIcon })
+                                .addTo(mymap)
+                                .bindPopup(generatePopupContent(row));
+                        }
+                    });
+                })
+                .catch(error => console.error('Error loading CSV:', error));
+        
+            // Function to generate popup content
+            function generatePopupContent(row) {
+                // Customize the popup content based on your CSV columns
+                return `<strong>${row.personName}</strong><br>Net Worth: ${row.finalWorth}<br>Country: ${row.country}<br>Source: ${row.source}`;
+            }
+        </script>
+        
+        
+</body>
+</html>
+
+
+

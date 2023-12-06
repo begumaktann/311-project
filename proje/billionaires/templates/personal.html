@@ -1,0 +1,77 @@
+{% include 'main.html' %}
+
+      <div class="container d-flex align-items-center" style="min-height: 70vh;">
+        <table class="table table-striped" id="csvTable">
+            <thead>
+                <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Final Worth</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Person Name</th>
+                    <th scope="col">age</th>
+                    <th scope="col">country</th>
+                    <th scope="col">city</th>
+                    <th scope="col">source</th>
+                    <th scope="col">industries</th>
+                    <th scope="col">countryOfCitizenship</th>
+                    <th scope="col">organization</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>211000</td>
+                    <td>Fashion &amp; Retail</td>
+                    <td>Bernard Arnault &amp; family</td>
+                    <td>74.0</td>
+                    <td>France</td>
+                    <td>Paris</td>
+                    <td>LVMH</td>
+                    <td>Fashion &amp; Retail</td>
+                    <td>France</td>
+                    <td>LVMH Moët Hennessy Louis Vuitton</td>
+
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>180000</td>
+                    <td>Automotive</td>
+                    <td>Elon Musk</td>
+                    <td>51.0</td>
+                    <td>United States</td>
+                    <td>Austin</td>
+                    <td>&quot;Tesla, SpaceX&quot;</td>
+                    <td>Automotive</td>
+                    <td>United States</td>
+                    <td>Tesla</td>
+
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>114000</td>
+                    <td>Technology</td>
+                    <td>Jeff Bezos</td>
+                    <td>59.0</td>
+                    <td>United States</td>
+                    <td>Medina</td>
+                    <td>Amazon</td>
+                    <td>Technology</td>
+                    <td>United States</td>
+                    <td>Amazon</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#csvTable').DataTable();
+        });
+    </script>
+    
+
+
+      
+</body>
+</html>
