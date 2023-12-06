@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -48,4 +49,11 @@ def profile(request):
     }
     return render(request,"profile.html",context)
 
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect("home")
 
+
+def profile(request):
+    return render(request,"profile.html")

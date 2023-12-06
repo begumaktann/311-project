@@ -1,14 +1,21 @@
 from django.db import models
 
-class Billionaire(models.Model):
-    name = models.CharField(max_length=100)
+class billionaires_personal(models.Model):
+    id=models.IntegerField()
     age = models.IntegerField()
+    country=models.CharField(max_length=100)
+    city=models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     gender = models.CharField(max_length=10)
+    state=models.CharField(max_length=100)
+    country_of_citizenship=models.CharField(max_length=100)
+    title=models.CharField(max_length=100)
+    email=models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
-class CountryPhysical(models.Model):
+class country_physical(models.Model):
     country = models.CharField(max_length=100)
     population=models.IntegerField()
     latitude = models.FloatField()
@@ -17,7 +24,7 @@ class CountryPhysical(models.Model):
     def __str__(self):
         return self.country
 
-class CountryEconomic(models.Model):
+class country_indicators(models.Model):
     country = models.CharField(max_length=100)
     cpi_country=models.FloatField()
     cpi_change_country=models.FloatField()
@@ -31,7 +38,7 @@ class CountryEconomic(models.Model):
     def __str__(self):
         return self.country
 
-class BillionaireEconomic(models.Model):
+class billionaireship(models.Model):
     rank=models.IntegerField()
     selfmade=models.BooleanField()
     final_worth = models.DecimalField(max_digits=20, decimal_places=2)
