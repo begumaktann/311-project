@@ -1,32 +1,32 @@
 from django.db import models
 
 class billionaires_personal(models.Model):
-    id=models.IntegerField()
-    age = models.IntegerField()
-    country=models.CharField(max_length=100)
-    city=models.CharField(max_length=100)
-    name = models.CharField(max_length=100)
-    gender = models.CharField(max_length=10)
-    state=models.CharField(max_length=100)
-    country_of_citizenship=models.CharField(max_length=100)
-    title=models.CharField(max_length=100)
-    email=models.CharField(max_length=100)
+    BillionaireId=models.IntegerField()
+    Age = models.IntegerField()
+    Country=models.CharField(max_length=45)
+    City=models.CharField(max_length=45)
+    PersonName = models.CharField(max_length=45)
+    State=models.CharField(max_length=45)
+    CountryOfCitizenship=models.CharField(max_length=45)
+    Title=models.CharField(max_length=45)
+    Gender = models.CharField(max_length=10)
+    email=models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
 
 class country_physical(models.Model):
-    country = models.CharField(max_length=100)
-    population=models.IntegerField()
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    CountryName = models.CharField(max_length=100)
+    Population=models.IntegerField()
+    Latitude = models.FloatField()
+    Longitude = models.FloatField()
 
     def __str__(self):
         return self.country
 
 class country_indicators(models.Model):
-    country = models.CharField(max_length=100)
-    cpi_country=models.FloatField()
+    Country = models.CharField(max_length=100)
+    Cpi_country=models.FloatField()
     cpi_change_country=models.FloatField()
     gross_tertiary_education_enrollment=models.FloatField()
     gross_primary_education_enrollment_country=models.FloatField()
