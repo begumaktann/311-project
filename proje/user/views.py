@@ -43,7 +43,6 @@ def user_login(request):
 @login_required
 def profile(request):
     u_form=UserUpdateForm()
-
     context = {
         'u_form': u_form,
     }

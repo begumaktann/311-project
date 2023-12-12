@@ -1,66 +1,35 @@
 {% include 'main.html' %}
 
       <div class="container d-flex align-items-center" style="min-height: 70vh;">
-        <table class="table table-striped" id="csvTable">
+        <table class="table table-warning table-striped" id="csvTable">
             <thead>
                 <tr>
-                    <th scope="col">Rank</th>
-                    <th scope="col">Final Worth</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Person Name</th>
-                    <th scope="col">age</th>
-                    <th scope="col">country</th>
-                    <th scope="col">city</th>
-                    <th scope="col">source</th>
-                    <th scope="col">industries</th>
+                    <th scope="col">BillionaireID</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">City</th>
+                    <th scope="col">PersonName</th>
+                    <th scope="col">State</th>
                     <th scope="col">countryOfCitizenship</th>
-                    <th scope="col">organization</th>
-                    <!-- Add more columns as needed -->
+                    <th scope="col">Title</th>
+                    <th scope="col">Gender</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>211000</td>
-                    <td>Fashion &amp; Retail</td>
-                    <td>Bernard Arnault &amp; family</td>
-                    <td>74.0</td>
-                    <td>France</td>
-                    <td>Paris</td>
-                    <td>LVMH</td>
-                    <td>Fashion &amp; Retail</td>
-                    <td>France</td>
-                    <td>LVMH Moët Hennessy Louis Vuitton</td>
-
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>180000</td>
-                    <td>Automotive</td>
-                    <td>Elon Musk</td>
-                    <td>51.0</td>
-                    <td>United States</td>
-                    <td>Austin</td>
-                    <td>&quot;Tesla, SpaceX&quot;</td>
-                    <td>Automotive</td>
-                    <td>United States</td>
-                    <td>Tesla</td>
-
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>114000</td>
-                    <td>Technology</td>
-                    <td>Jeff Bezos</td>
-                    <td>59.0</td>
-                    <td>United States</td>
-                    <td>Medina</td>
-                    <td>Amazon</td>
-                    <td>Technology</td>
-                    <td>United States</td>
-                    <td>Amazon</td>
-
-                </tr>
+                <!-- Iterate through the billionaires' data -->
+                {% for billionaire in billionaires_data %}
+            <tr>
+                <td>{{ billionaire.BillionaireId }}</td>
+                <td>{{ billionaire.Age }}</td>
+                <td>{{ billionaire.Country }}</td>
+                <td>{{ billionaire.City }}</td>
+                <td>{{ billionaire.PersonName }}</td>
+                <td>{{ billionaire.State }}</td>
+                <td>{{ billionaire.countryOfCitizenship }}</td>
+                <td>{{ billionaire.Title }}</td>
+                <td>{{ billionaire.Gender }}</td>
+            </tr>
+        {% endfor %}
             </tbody>
         </table>
     </div>
@@ -69,9 +38,9 @@
             $('#csvTable').DataTable();
         });
     </script>
-    
 
 
-      
+
+
 </body>
 </html>
