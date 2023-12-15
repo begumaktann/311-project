@@ -5,15 +5,20 @@
             
             <thead>
               <tr>
-                <th scope="col"></th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+
+                <th scope="col">Name</th>
+                <th scope="col">Rank</th>
+                <th scope="col">FinalWorth</th>
+                <th scope="col">Source</th>
+                  <th scope="col">Organization</th>
+                  <th scope="col">Self Made</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Industry</th>
               </tr>
             </thead>
             <tbody>
                 <!-- Iterate through the billionaires' data -->
-                {% for billionaire in billionaires_data %}
+                {% for billionaire in page_billionaires %}
             <tr>
                 <td>{{ billionaire.Name }}</td>
                 <td>{{ billionaire.Rank }}</td>
@@ -27,7 +32,23 @@
         {% endfor %}
             </tbody>
           </table>
+            <div class="pagination">
+        <span class="step-links">
+            {% if page_billionaires.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_billionaires.previous_page_number }}">previous</a>
+            {% endif %}
 
+            <span class="current">
+                Page {{ page_billionaires.number }} of {{ page_billionaires.paginator.num_pages }}.
+            </span>
+
+            {% if page_billionaires.has_next %}
+                <a href="?page={{ page_billionaires.next_page_number }}">next</a>
+                <a href="?page={{ page_billionaires.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
       </div>
       <script>
         $(document).ready(function () {

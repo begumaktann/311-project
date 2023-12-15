@@ -1,46 +1,69 @@
 {% include 'main.html' %}
 
-      <div class="container d-flex align-items-center" style="min-height: 70vh;">
-        <table class="table table-warning table-striped" id="csvTable">
-            <thead>
-                <tr>
-                    <th scope="col">BillionaireID</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">City</th>
-                    <th scope="col">PersonName</th>
-                    <th scope="col">State</th>
-                    <th scope="col">countryOfCitizenship</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Gender</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Iterate through the billionaires' data -->
-                {% for billionaire in billionaires_data %}
+<div class="container d-flex align-items-center" style="min-height: 70vh;">
+    <table class="table table-warning table-striped" id="csvTable">
+        <thead>
             <tr>
-                <td>{{ billionaire.BillionaireId }}</td>
-                <td>{{ billionaire.Age }}</td>
-                <td>{{ billionaire.Country }}</td>
-                <td>{{ billionaire.City }}</td>
-                <td>{{ billionaire.PersonName }}</td>
-                <td>{{ billionaire.State }}</td>
-                <td>{{ billionaire.countryOfCitizenship }}</td>
-                <td>{{ billionaire.Title }}</td>
-                <td>{{ billionaire.Gender }}</td>
+                <th scope="col">BillionaireID</th>
+                <th scope="col">Age</th>
+                <th scope="col">Country</th>
+                <th scope="col">City</th>
+                <th scope="col">PersonName</th>
+                <th scope="col">State</th>
+                <th scope="col">countryOfCitizenship</th>
+                <th scope="col">Title</th>
+                <th scope="col">Gender</th>
             </tr>
-        {% endfor %}
-            </tbody>
-        </table>
+        </thead>
+        <tbody>
+            <!-- Iterate through the billionaires' data -->
+            {% for billionaire in page_billionaires %}
+                <tr>
+                    <td>{{ billionaire.BillionaireID }}</td>
+                    <td>{{ billionaire.Age }}</td>
+                    <td>{{ billionaire.Country }}</td>
+                    <td>{{ billionaire.City }}</td>
+                    <td>{{ billionaire.PersonName }}</td>
+                    <td>{{ billionaire.State }}</td>
+                    <td>{{ billionaire.CountryOfCitizenship }}</td>
+                    <td>{{ billionaire.Title }}</td>
+                    <td>{{ billionaire.Gender }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- Add pagination controls -->
+
+<div class="row mt-4">
+        <div class="col-md-12 d-flex justify-content-center">
+            <!-- Better-looking pagination controls -->
+            <ul class="pagination">
+                {% if page_billionaires.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">&laquo; First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_billionaires.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item disabled">
+                    <span class="page-link">
+                        Page {{ page_billionaires.number }} of {{ page_billionaires.paginator.num_pages }}
+                    </span>
+                </li>
+
+                {% if page_billionaires.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_billionaires.next_page_number }}">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_billionaires.paginator.num_pages }}">Last &raquo;</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            $('#csvTable').DataTable();
-        });
-    </script>
+</div>
+</div>
 
-
-
-
-</body>
-</html>

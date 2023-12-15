@@ -19,16 +19,18 @@ class billionaires_personal(models.Model):
         return self.name
 
 class country_physical(models.Model):
-    CountryName = models.CharField(max_length=45)
+    CountryName = models.CharField(max_length=45,primary_key=True)
     Population=models.IntegerField()
     Latitude = models.FloatField()
     Longitude = models.FloatField()
 
     def __str__(self):
         return self.country
+    class Meta:
+        db_table = 'country_physical'
 
 class country_indicators(models.Model):
-    Country = models.CharField(max_length=45)
+    Country = models.CharField(max_length=45,primary_key=True)
     cpi=models.FloatField()
     cpiChange=models.FloatField()
     gdp = models.CharField(max_length=45)
@@ -40,7 +42,8 @@ class country_indicators(models.Model):
 
     def __str__(self):
         return self.country
-
+    class Meta:
+        db_table = 'country_indicators'
 class billionaireship(models.Model):
     Name=models.CharField(max_length=45,primary_key=True)
     Rank=models.IntegerField()
