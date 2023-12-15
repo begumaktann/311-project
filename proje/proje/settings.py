@@ -84,7 +84,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': 'Zey1nep2*',
         'HOST': 'localhost',  # Use 'localhost' if your database is on the same machine
-        'PORT': '',
+        'PORT': '3306',
     }
 }
 

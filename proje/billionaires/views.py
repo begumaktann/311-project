@@ -14,7 +14,7 @@ def geog(request):
 
 def personal(request):
     # Retrieve data from billionaires_personal model
-    billionaires_data = billionaires_personal.objects.all()  # Fetch all data, adjust as needed
+    billionaires_data = billionaires_personal.objects.all().values()  # Fetch all data, adjust as needed
     print(billionaires_data)
     context = {
         'billionaires_data': billionaires_data  # Pass the data to the template
@@ -23,7 +23,7 @@ def personal(request):
 
 
 def financial(request):
-    billionaires_data = billionaireship.objects.all()  # Fetch all data, adjust as needed
+    billionaires_data = billionaireship.objects.all().values()  # Fetch all data, adjust as needed
 
     context = {
         'billionaires_data': billionaires_data  # Pass the data to the template

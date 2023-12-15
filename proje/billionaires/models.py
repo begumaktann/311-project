@@ -1,7 +1,7 @@
 from django.db import models
 
 class billionaires_personal(models.Model):
-    BillionaireId=models.IntegerField()
+    BillionaireID=models.IntegerField(primary_key=True)
     Age = models.IntegerField()
     Country=models.CharField(max_length=45)
     City=models.CharField(max_length=45)
@@ -11,6 +11,9 @@ class billionaires_personal(models.Model):
     Title=models.CharField(max_length=45)
     Gender=models.CharField(max_length=10)
     email=models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'billionaires_personal'
 
     def __str__(self):
         return self.name
@@ -39,6 +42,7 @@ class country_indicators(models.Model):
         return self.country
 
 class billionaireship(models.Model):
+    Name=models.CharField(max_length=45,primary_key=True)
     Rank=models.IntegerField()
     FinalWorth = models.IntegerField()
     Source=models.CharField(max_length=45)
@@ -47,6 +51,8 @@ class billionaireship(models.Model):
     Status=models.CharField(max_length=1)
     Industry = models.CharField(max_length=100)
 
+    class Meta:
+        db_table = 'billionaireship'
     def __str__(self):
         return self.name
 
